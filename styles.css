@@ -1,0 +1,83 @@
+@font-face{
+  font-family: NeueHassBold;
+  src: url(./fonts/NeueHaasDisplayBold.ttf)
+}
+@font-face{
+  font-family: NeueHass;
+  src: url(./fonts/NeueHaasDisplayMediu.ttf)
+}
+body{
+    background-color: #FFFFFF;
+    font-family: sans-serif;
+}
+h1{
+    text-align: center;
+    color: #E60023;
+    font-family: NeueHassBold;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr; /* One column layout */
+    grid-template-rows: 1fr 1fr; /* Equal row heights */
+    row-gap: 15px; 
+    column-gap: 15px;
+    grid-template-columns: auto auto auto;
+
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.section{
+    height: fit-content;
+    background-color: #F4F4F4;
+    padding: 15px;
+    margin: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 12%;
+    width: auto;
+}
+.section h2{
+    text-align: center;
+    font-family: NeueHass;
+}
+.section p{
+    color: #E60023;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+  #trigger.section{
+    grid-row: 1; /* Place #trigger in the first row */
+    grid-column: 1;
+    z-index: 0;
+  }
+  #rules{
+    grid-column-start:2;
+    grid-column-end: 3;
+  }
+  #feedback{
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+  #loops.section{
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 1;
+    margin-top: 50vh;
+  }
+  .gif{
+    height: fit-content;
+    background-color: #F4F4F4;
+    padding: 15px;
+    margin: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 12%;
+    width: fit-content;
+  }
+ .gif-size{
+  width:20vw;
+ }
