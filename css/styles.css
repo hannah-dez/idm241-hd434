@@ -41,7 +41,7 @@ p{
   text-align: left;              
   height: fit-content;
 }
-.section #loops, .section #interaction, .section #feedback, .section #rules, .section #reference, .section #feedback, .section #trigger{
+.section #loops, .section #interaction, .section #feedback, .section #rules, .section #reference, .section #trigger, #mode-example{
   background-color: var(--container-grey);
   border: 1px solid var(--container-border);
   border-radius: 12%;
@@ -57,6 +57,18 @@ p{
 }
 .logo{
   max-width: 70px;
+}
+#mode-example{
+  width: 70vw;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10vh;
+}
+#mode-example video{
+  width: 60vw;
+  display: block;
+  margin: auto;
+  justify-content: center;
 }
 @media (max-width: 1000px) {
   .grid-container {
