@@ -6,11 +6,11 @@
 }
 @font-face{
   font-family: NeueHassBold;
-  src: url(./fonts/NeueHaasDisplayBold.ttf);
+  src: url(../fonts/NeueHaasDisplayBold.ttf);
 }
 @font-face{
   font-family: NeueHass;
-  src: url(./fonts/NeueHaasDisplayMediu.ttf);
+  src: url(../fonts/NeueHaasDisplayMediu.ttf);
 }
 body{
     background-color: var(--background);
