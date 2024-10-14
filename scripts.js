@@ -1,39 +1,58 @@
 const saveButton = document.getElementById('saveButton');
-let isSaved = false; 
+let isSaved = false;
 
 updateButtonState(saveButton);
 
-saveButton.addEventListener('mouseenter', function() {
-  //console.log('Mouse entered:', isSaved); 
+// Mouse Events
+saveButton.addEventListener('mouseenter', handleMouseEnter);
+saveButton.addEventListener('mouseleave', handleMouseLeave);
+saveButton.addEventListener('mousedown', handleMouseDown);
+saveButton.addEventListener('mouseup', handleMouseUp);
+
+// Touch Events
+saveButton.addEventListener('touchstart', handleTouchStart);
+saveButton.addEventListener('touchend', handleTouchEnd);
+
+function handleMouseEnter() {
   if (!isSaved) {
-    this.classList.add('hover'); 
+    this.classList.add('hover');
   }
-});
+}
 
-saveButton.addEventListener('mouseleave', function() {
- // console.log('Mouse left:', isSaved); 
-  this.classList.remove('hover'); 
-});
+function handleMouseLeave() {
+  this.classList.remove('hover');
+}
 
-saveButton.addEventListener('mousedown', function() {
- // console.log('Mouse down:', isSaved); 
-  this.style.transform = 'scale(0.9)'; 
+function handleMouseDown() {
+  this.style.transform = 'scale(0.9)';
   if (!isSaved) {
-    this.classList.add('mousedown'); 
+    this.classList.add('mousedown');
   }
-});
+}
 
-saveButton.addEventListener('mouseup', function() {
-  //console.log('Mouse up:', isSaved); 
-  this.style.transform = 'scale(1)'; 
+function handleMouseUp() {
+  this.style.transform = 'scale(1)';
   this.classList.remove('mousedown');
-
   toggleSaveState(this);
-});
+}
+
+function handleTouchStart(e) {
+  e.preventDefault();
+  this.style.transform = 'scale(0.9)';
+  if (!isSaved) {
+    this.classList.add('mousedown');
+  }
+}
+
+function handleTouchEnd(e) {
+  e.preventDefault();
+  this.style.transform = 'scale(1)';
+  this.classList.remove('mousedown');
+  toggleSaveState(this);
+}
 
 function toggleSaveState(button) {
-  isSaved = !isSaved; 
- // console.log('State toggled:', isSaved); 
+  isSaved = !isSaved;
   updateButtonState(button);
 }
 
@@ -49,3 +68,5 @@ function updateButtonState(button) {
   }
 }
 
+
+// Mode Code

@@ -89,7 +89,7 @@ p{
   color: white;
   border: none;
   border-radius: 50px;
-  padding: 10px 15px;
+  padding: 15px 20px;
   background-color: var(--main-red);
   cursor: pointer;
 }
@@ -115,6 +115,7 @@ p{
   background-color: var(--mouseDown-red);
 }
 
+
 /*Variable Design*/
 @media (max-width: 1000px) {
   .grid-container {
@@ -132,5 +133,17 @@ p{
   }
   .section img {
     max-width: 70vw;    
+  }
+}
+
+/* Mobile Interactions */
+@media (hover: none) and (pointer: coarse) {
+  .button {
+    font-size: larger;
+    padding: 15px 20px;
+  }
+
+  .button.mousedown {
+    background-color: var(--mouseDown-red);
   }
 }
