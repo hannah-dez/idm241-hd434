@@ -3,6 +3,8 @@
   --background: white; 
   --container-grey: #F4F4F4; 
   --container-border:#ddd;
+  --dark-red: #B60000;
+  --mouseDown-red:#A3081A;
 }
 @font-face{
   font-family: NeueHassBold;
@@ -79,17 +81,41 @@ p{
   justify-content: center;
 }
 
-button{
+.button {
   display: block;
   margin: auto;
   font-family: NotoSans;
   font-size: larger;
   color: white;
-  background-color: var(--main-red);
   border: none;
   border-radius: 50px;
   padding: 10px 15px;
+  background-color: var(--main-red);
+  cursor: pointer;
 }
+
+/* Button states JS*/
+.save {
+  background-color: var(--main-red);
+}
+
+.saved {
+  background-color: black; 
+}
+
+.save:hover {
+  background-color: var(--dark-red);
+}
+
+.saved:hover {
+  background-color: black; 
+}
+
+.button.mousedown {
+  background-color: var(--mouseDown-red);
+}
+
+/*Variable Design*/
 @media (max-width: 1000px) {
   .grid-container {
       grid-template-columns: 40vw 40vw; 
