@@ -22,6 +22,8 @@
   font-family: NotoSans;
   src: url(../fonts/NotoSans-VariableFont_wdth\,wght.ttf);
 }
+
+/*GENERAL*/
 body{
     background-color: var(--background);
     font-family: sans-serif;
@@ -46,7 +48,11 @@ p{
     justify-content: center;
 
 }
+.logo{
+  max-width: 70px;
+}
 
+/*DIVS DECOR*/
 .section {
   text-align: left;              
   height: fit-content;
@@ -65,9 +71,7 @@ p{
   display: block;                
   margin: 10px auto;           
 }
-.logo{
-  max-width: 70px;
-}
+
 #mode-example{
   width: 70vw;
   justify-content: center;
@@ -81,6 +85,7 @@ p{
   justify-content: center;
 }
 
+/*BUTTON INTERACTION*/
 .button {
   display: block;
   margin: auto;
@@ -137,8 +142,8 @@ p{
 }
 
 
-/*Variable Design*/
-@media (max-width: 1000px) {
+/*VARIABLE DESIGN*/
+@media (max-width: 1000px) { /*TABLET*/
   .grid-container {
       grid-template-columns: 40vw 40vw; 
   }
@@ -147,8 +152,7 @@ p{
   }
 }
 
-/* Media Query for Mobile Devices */
-@media (max-width: 600px) {
+@media (max-width: 600px) { /*MOBILE*/
   .grid-container {
       grid-template-columns: 80vw; 
   }
@@ -157,7 +161,7 @@ p{
   }
 }
 
-/* Mobile Interactions */
+/* Tap Interactions */
 @media (hover: none) and (pointer: coarse) {
   .button {
     font-size: larger;

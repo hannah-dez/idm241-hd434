@@ -55,6 +55,7 @@ function handleTouchEnd(e) {
   showPopup();
 }
 
+//Save State + Log/Flag Set
 function toggleSaveState(button) {
   isSaved = !isSaved;
   //simulate database log of save state
@@ -87,6 +88,7 @@ function showAndFlyIn(popup) {
   }, 500);
 }
 
+//button state
 function updateButtonState(button) {
   if (isSaved) {
     button.classList.remove('save');
