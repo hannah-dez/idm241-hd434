@@ -115,6 +115,27 @@ p{
   background-color: var(--mouseDown-red);
 }
 
+/*Pop-Up Styles*/
+.popup {
+  position: fixed;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%); 
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 15px;
+  opacity: 0;
+  transition: bottom 0.5s ease, opacity 0.5s ease;
+  z-index: 1000;
+  text-align: center;
+}
+
+.popup.visible {
+  bottom: 20px; /* Position for visible state */
+  opacity: 1; /* Make it fully visible */
+}
+
 
 /*Variable Design*/
 @media (max-width: 1000px) {
