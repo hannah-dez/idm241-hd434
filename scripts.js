@@ -57,6 +57,8 @@ function handleTouchEnd(e) {
 
 function toggleSaveState(button) {
   isSaved = !isSaved;
+  //simulate database log of save state
+  console.log('Save state is now:', isSaved ? 'Saved (true)' : 'Not Saved (false)');
   updateButtonState(button);
 }
 
