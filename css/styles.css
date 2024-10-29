@@ -84,6 +84,12 @@ p{
   margin: auto;
   justify-content: center;
 }
+#mode-example img{
+  width: 50vw;
+  display: block;
+  margin: auto;
+  justify-content: center;
+}
 
 /*BUTTON INTERACTION*/
 .button {
@@ -141,7 +147,6 @@ p{
   opacity: 1; /* Make it fully visible */
 }
 
-
 /*VARIABLE DESIGN*/
 @media (max-width: 1000px) { /*TABLET*/
   .grid-container {
@@ -158,6 +163,9 @@ p{
   }
   .section img {
     max-width: 70vw;    
+  }
+  #mode-example img{
+    width: 65vw;
   }
 }
 
