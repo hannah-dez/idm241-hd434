@@ -147,6 +147,148 @@ p{
   opacity: 1; /* Make it fully visible */
 }
 
+/*-------------------------------------------------BEtA BUILD-------------------------------------------------------------------*/
+
+.image-container{
+  display: block;
+  height: auto;
+  width: 25vw;
+  margin: auto;
+  position: relative;
+}
+
+.overlay-image {
+  display: block; /* Ensures no gaps below the image */
+  width: 15vw; /* Adjust to your desired size */
+  height: auto; /* Keeps the aspect ratio */
+}
+.image-container img{
+  width: 27.72vw;
+  height: 75.2vh;
+}
+
+.pop-up-pin{
+  position: absolute; /* Position it absolutely within the image container */
+    top: 0; /* Align it to the top */
+    left: 0; /* Align it to the left */
+  width: 25vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 70vh;
+  padding: 20px;
+  border-radius: 3.5vw ;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+  gap: 10px;
+  overflow: hidden; /* Ensures animation stays within bounds */
+  opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .pop-up-pin {
+  opacity: 1; /* Show on hover */
+}
+
+.pop-up-pin p{
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+@keyframes flyInRipple {
+  0% {
+    transform: translateY(100%); /* Start off the bottom of the container */
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(-10%); /* Move slightly above the final position */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0); /* Settle into the final position */
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+      transform: scale(0); /* Start from scale 0 */
+      opacity: 0; /* Start hidden */
+  }
+  100% {
+      transform: scale(1); /* End at normal size */
+      opacity: 1; /* Fully visible */
+  }
+}
+
+.pop-up-pin:hover .more-button {
+  animation: flyInRipple 0.6s ease-out forwards;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+.pop-up-pin:hover .share-button {
+  animation: flyInRipple 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.pin-btn{
+  background-color: red;
+  width: 5vw;
+  height: 10vh;
+  border: none;
+  border-radius: 100%;
+  grid-column-start: 4;
+  transform: scale(0); /* Start scaled down */
+  opacity: 0; /* Start hidden */
+  transition: transform 1s ease, opacity 0.5s ease;
+}
+.pin-btn img{
+  width: auto;
+  height: auto;
+}
+
+.pop-up-pin:hover .pin-btn {
+  animation: scaleIn 0.3s forwards; /* Trigger the scaling animation */
+}
+
+.more-button{
+  background-color: white;
+  border: none;
+  width: 4.5vw;
+  height: 9vh;
+  border-radius: 100%;
+  grid-column-start: 4;
+  grid-row-start: 5;
+  align-self: end;
+  justify-self: end;
+  opacity: 0;
+}
+.more-button img{
+  width: auto;
+  height: auto;
+}
+.share-button{
+  background-color: white;
+  border: none;
+  width: 4.5vw;
+  height: 9vh;
+  border-radius: 100%;
+  grid-column-start: 3;
+  grid-row-start: 5;
+  align-self: end;
+  justify-self: end;
+  opacity: 0;
+}
+.share-button img{
+  width: auto;
+  height: auto;
+}
+
+/*PIN BUTTON ANIMATION*/
+
+
+
 /*VARIABLE DESIGN*/
 @media (max-width: 1000px) { /*TABLET*/
   .grid-container {
