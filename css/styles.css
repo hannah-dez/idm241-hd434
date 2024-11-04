@@ -60,7 +60,7 @@ p{
 .section #loops, .section #interaction, .section #feedback, .section #rules, .section #reference, .section #trigger, #mode-example{
   background-color: var(--container-grey);
   border: 1px solid var(--container-border);
-  border-radius: 10vw;
+  border-radius: 3vw;
   margin:10px;
   margin-top: 20px;
   padding: 10px;
