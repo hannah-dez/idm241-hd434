@@ -1,30 +1,64 @@
 document.addEventListener('DOMContentLoaded', () => {
   const pinButton = document.querySelector('.pin-btn');
+  const popup4 = document.getElementById('popup4');
+  const popup5 = document.getElementById('popup5');
+  let hideTimeout;
 
   if (!pinButton) {
       console.error('Pin button not found!');
       return;
   }
 
+  if (!popup4 || !popup5) {
+      console.error('Popups not found!');
+      return;
+  }
+
   // Set the default state on load
   pinButton.classList.add('default');
+
+  function showPopup(popup) {
+      popup.classList.add('show');
+      
+      clearTimeout(hideTimeout);
+
+      hideTimeout = setTimeout(() => {
+          popup.classList.remove('show');
+      }, 2000);
+  }
 
   // Toggle active state on button click
   pinButton.addEventListener('click', () => {
       if (pinButton.classList.contains('active')) {
           pinButton.classList.remove('active');
           pinButton.classList.add('default');
+          showPopup(popup5); 
       } else {
-          // Start the growing circle effect
-          pinButton.classList.add('active'); // Temporarily add active for animation
+          pinButton.classList.add('active');
           setTimeout(() => {
-              pinButton.classList.remove('default'); // Remove default class
-              pinButton.classList.add('active'); // Finally add active class
-          }, 600); // Match duration of the animation
+              pinButton.classList.remove('default');
+              pinButton.classList.add('active');
+              showPopup(popup4); 
+          }, 600);
       }
   });
 
-  // Add mousedown and mouseup event listeners
+  // Prevent popup from disappearing when hovered over
+  function preventHideOnHover(popup) {
+      popup.addEventListener('mouseenter', () => {
+          clearTimeout(hideTimeout); // Cancel hide timeout on hover
+      });
+      
+      popup.addEventListener('mouseleave', () => {
+          hideTimeout = setTimeout(() => popup.classList.remove('show'), 700); // Restart hide timeout on mouse leave
+      });
+  }
+
+
+  preventHideOnHover(popup4);
+  preventHideOnHover(popup5);
+
+  // mousedown and mouseup event listeners
   pinButton.addEventListener('mousedown', () => {
       pinButton.classList.add('mouse-down');
   });
@@ -34,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+//alpha-------------------------------------------------------------------------------
 // Mouse Events
 saveButton.addEventListener('mouseenter', handleMouseEnter);
 saveButton.addEventListener('mouseleave', handleMouseLeave);

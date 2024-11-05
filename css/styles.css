@@ -427,8 +427,36 @@ p{
     transform: translate(100%, 100%);
   }
 }      
+/* Common styles for popups */
+.popup3 {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  transition: opacity 0.6s, height 0.6s, transform 0.6s;
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000;
+  cursor:pointer;
+}
 
-
+/* Animation when showing the popup */
+.popup3.show {
+  opacity: 1;
+  transform: translate(-50%, -50px) scale(1); /* Adjust to control the fly-in effect */
+}
+.popup3.show:hover {
+  transform: translate(-50%, -50px) scale(1.1); /* Scale up by 10% on hover */
+  transition: transform 0.3s; /* Smooth transition for hover scaling */
+}
 /*VARIABLE DESIGN*/
 @media (max-width: 1000px) { /*TABLET*/
   .grid-container {
