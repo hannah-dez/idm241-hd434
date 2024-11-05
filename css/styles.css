@@ -5,6 +5,7 @@
   --container-border:#ddd;
   --dark-red: #B60000;
   --mouseDown-red:#A3081A;
+  --charcoal: #3F3B3B;
 }
 @font-face{
   font-family: NeueHassBold;
@@ -148,8 +149,7 @@ p{
 }
 
 /*-------------------------------------------------BEtA BUILD-------------------------------------------------------------------*/
-
-.image-container{
+.image-container {
   display: block;
   height: auto;
   width: 25vw;
@@ -162,50 +162,73 @@ p{
   width: 15vw; /* Adjust to your desired size */
   height: auto; /* Keeps the aspect ratio */
 }
-.image-container img{
+
+.image-container img {
   width: 27.72vw;
   height: 75.2vh;
 }
 
-.pop-up-pin{
+.pop-up-pin {
   position: absolute; /* Position it absolutely within the image container */
-    top: 0; /* Align it to the top */
-    left: 0; /* Align it to the left */
+  top: 0; /* Align it to the top */
+  left: 0; /* Align it to the left */
   width: 25vw;
   background-color: rgba(0, 0, 0, 0.4);
   height: 70vh;
   padding: 20px;
-  border-radius: 3.5vw ;
+  border-radius: 3.5vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
   gap: 10px;
   overflow: hidden; /* Ensures animation stays within bounds */
   opacity: 0; /* Start hidden */
-    transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
 }
 
 .image-container:hover .pop-up-pin {
   opacity: 1; /* Show on hover */
 }
 
-.pop-up-pin p{
+.pop-up-pin p {
   color: white;
   font-size: 1.2rem;
   text-decoration: underline;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transition-delay: 0.2s;
+  grid-column-start: 1;
+  grid-row-start: 1;
 }
+
+.pop-up-pin:hover p {
+  opacity: 1;
+}
+
 @keyframes flyInRipple {
   0% {
-    transform: translateY(100%); /* Start off the bottom of the container */
-    opacity: 0;
+      transform: translateY(100%); /* Start off the bottom of the container */
+      opacity: 0;
   }
   70% {
-    transform: translateY(-10%); /* Move slightly above the final position */
-    opacity: 1;
+      transform: translateY(-10%); /* Move slightly above the final position */
+      opacity: 1;
   }
   100% {
-    transform: translateY(0); /* Settle into the final position */
-    opacity: 1;
+      transform: translateY(0); /* Settle into the final position */
+      opacity: 1;
+  }
+}
+
+@keyframes flyOut {
+  0% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(100%);
+      opacity: 0;
   }
 }
 
@@ -217,6 +240,17 @@ p{
   100% {
       transform: scale(1); /* End at normal size */
       opacity: 1; /* Fully visible */
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(0);
+      opacity: 0;
   }
 }
 
@@ -232,8 +266,8 @@ p{
   animation-fill-mode: forwards;
 }
 
-.pin-btn{
-  background-color: red;
+.pin-btn {
+  background-color: var(--main-red);
   width: 5vw;
   height: 10vh;
   border: none;
@@ -241,18 +275,117 @@ p{
   grid-column-start: 4;
   transform: scale(0); /* Start scaled down */
   opacity: 0; /* Start hidden */
-  transition: transform 1s ease, opacity 0.5s ease;
+  transition: transform 0.3s ease, opacity 0.5s ease; /* Shorter transition for smoothness */
+  cursor: pointer;
 }
-.pin-btn img{
+
+.pin-btn img {
   width: auto;
   height: auto;
 }
 
 .pop-up-pin:hover .pin-btn {
-  animation: scaleIn 0.3s forwards; /* Trigger the scaling animation */
+  opacity: 1; /* Make the button visible */
+  transform: scale(1); /* Scale to normal size */
+  animation: scaleIn 0.3s forwards;}
+
+.pop-up-pin:not(:hover) .pin-btn {
+  animation: scaleOut 0.3s forwards;
 }
 
-.more-button{
+/* PIN BUTTON STUFF------------------------------------------------------------------ */
+.pin-btn.default {
+  opacity: 1; /* Fully visible */
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+/* Default state with pulse on hover */
+.pin-btn.default:hover {
+  animation: pulse 0.6s infinite; /* Start pulsing */
+  background-color: var(--dark-red);
+}
+
+/* Active state styles */
+.pin-btn.active {
+  background-color: rgba(0, 0, 0, 0); /* Change background when active */
+  transform: scale(1); /* Keep size normal */
+  border: 8px solid var(--main-red);
+}
+
+/* Ensure no pulsing animation in active state */
+.pin-btn.active:hover {
+  animation: none; /* Stop pulsing when active */
+  background-color: var(--charcoal);
+  border: none;
+}
+
+/* Mouse-up state styles for default */
+.pin-btn.default.mouse-up {
+  transform: scale(0.9); /* Slightly shrink when mouse is up */
+}
+
+/* Mouse-up state styles for active */
+.pin-btn.active.mouse-up {
+  transform: scale(0.9); /* Slightly shrink when mouse is up */
+}
+.pin-btn.active.mouse-down {
+  transform: scale(0.8); /* Shrinks by 10% */
+  background-color: black;
+}
+.pin-btn.default.mouse-down {
+  animation: none;
+  transform: scale(0.8); /* Shrinks by 10% */
+  background-color: var(--mouseDown-red);
+}
+.pin-btn {
+  /* Existing styles */
+  position: relative; /* Ensure the button can be positioned for the sparks */
+}
+
+.pin-btn.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0; /* Start from a point */
+  height: 0; /* Start from a point */
+  background-color: red; /* Spark color */
+  border-radius: 50%;
+  animation: sparkAnimation 0.6s forwards; /* Trigger the animation */
+  pointer-events: none; /* Prevent mouse events on the spark */
+}
+
+@keyframes sparkAnimation {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 20px; /* Increase size */
+    height: 20px; /* Increase size */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    width: 40px; /* Increase size */
+    height: 40px; /* Increase size */
+    opacity: 0; /* Fade out */
+    transform: translate(-50%, -50%); /* Center it */
+  }
+}
+
+.more-button {
   background-color: white;
   border: none;
   width: 4.5vw;
@@ -264,11 +397,13 @@ p{
   justify-self: end;
   opacity: 0;
 }
-.more-button img{
+
+.more-button img {
   width: auto;
   height: auto;
 }
-.share-button{
+
+.share-button {
   background-color: white;
   border: none;
   width: 4.5vw;
@@ -280,15 +415,20 @@ p{
   justify-self: end;
   opacity: 0;
 }
-.share-button img{
+
+.share-button img {
   width: auto;
   height: auto;
 }
 
-/*PIN BUTTON ANIMATION*/
+.pop-up-pin:not(:hover) .more-button {
+  animation: flyOut 0.6s ease-out forwards;
+}
 
-
-
+.pop-up-pin:not(:hover) .share-button {
+  animation: flyOut 0.6s ease-out forwards;
+}
+                          
 /*VARIABLE DESIGN*/
 @media (max-width: 1000px) { /*TABLET*/
   .grid-container {

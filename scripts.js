@@ -1,7 +1,43 @@
-const saveButton = document.getElementById('saveButton');
-let isSaved = false;
+//BETA
+document.addEventListener('DOMContentLoaded', () => {
+  const pinButton = document.querySelector('.pin-btn');
 
-updateButtonState(saveButton);
+  if (!pinButton) {
+      console.error('Pin button not found!');
+      return;
+  }
+
+  // Set the default state on load
+  pinButton.classList.add('default');
+
+  // Toggle active state on button click
+  pinButton.addEventListener('click', () => {
+      if (pinButton.classList.contains('active')) {
+          pinButton.classList.remove('active');
+          pinButton.classList.add('default');
+      } else {
+          pinButton.classList.remove('default');
+          pinButton.classList.add('active');
+
+          // Trigger spark effect
+          pinButton.classList.add('spark'); // Add a class to trigger the spark animation
+
+          // Remove the spark class after animation ends
+          setTimeout(() => {
+              pinButton.classList.remove('spark');
+          }, 600); // Match this duration with your CSS animation duration
+      }
+  });
+
+  // Add mousedown and mouseup event listeners
+  pinButton.addEventListener('mousedown', () => {
+      pinButton.classList.add('mouse-down');
+  });
+
+  pinButton.addEventListener('mouseup', () => {
+      pinButton.classList.remove('mouse-down');
+  });
+});
 
 // Mouse Events
 saveButton.addEventListener('mouseenter', handleMouseEnter);
@@ -100,7 +136,3 @@ function updateButtonState(button) {
     button.innerHTML = 'Save';
   }
 }
-
-
-//BETA
-
