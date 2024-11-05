@@ -1,4 +1,3 @@
-//BETA
 document.addEventListener('DOMContentLoaded', () => {
   const pinButton = document.querySelector('.pin-btn');
 
@@ -16,16 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
           pinButton.classList.remove('active');
           pinButton.classList.add('default');
       } else {
-          pinButton.classList.remove('default');
-          pinButton.classList.add('active');
-
-          // Trigger spark effect
-          pinButton.classList.add('spark'); // Add a class to trigger the spark animation
-
-          // Remove the spark class after animation ends
+          // Start the growing circle effect
+          pinButton.classList.add('active'); // Temporarily add active for animation
           setTimeout(() => {
-              pinButton.classList.remove('spark');
-          }, 600); // Match this duration with your CSS animation duration
+              pinButton.classList.remove('default'); // Remove default class
+              pinButton.classList.add('active'); // Finally add active class
+          }, 600); // Match duration of the animation
       }
   });
 
