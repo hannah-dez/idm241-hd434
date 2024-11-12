@@ -38,6 +38,12 @@ h1{
 h2{
   text-align: center;
 }
+h3{
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  color: var(--main-red);
+}
 p{
   font-family: NeueHass;
   color: var(--main-red);
