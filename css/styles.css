@@ -6,6 +6,7 @@
   --dark-red: #B60000;
   --mouseDown-red:#A3081A;
   --charcoal: #3F3B3B;
+  --mouse-down-grey: #D7D7D7;
 }
 @font-face{
   font-family: NeueHassBold;
@@ -191,6 +192,7 @@ p{
   border-radius: 3.5vw;
   box-sizing: border-box; 
   padding: 15px;
+  z-index: 998;
 }
 
 .image-container:hover .pop-up-pin {
@@ -214,15 +216,15 @@ p{
 
 @keyframes flyInRipple {
   0% {
-      transform: translateY(100%); /* Start off the bottom of the container */
+      transform: translateY(100%);
       opacity: 0;
   }
   70% {
-      transform: translateY(-10%); /* Move slightly above the final position */
+      transform: translateY(-10%);
       opacity: 1;
   }
   100% {
-      transform: translateY(0); /* Settle into the final position */
+      transform: translateY(0);
       opacity: 1;
   }
 }
@@ -260,13 +262,14 @@ p{
   }
 }
 
-.pop-up-pin:hover .more-button {
+.pop-up-pin:hover .more-button-container {
   animation: flyInRipple 0.6s ease-out forwards;
   animation-delay: 0.1s;
   animation-fill-mode: forwards;
 }
 
-.pop-up-pin:hover .share-button {
+
+.pop-up-pin:hover .share-button-container {
   animation: flyInRipple 0.6s ease-out forwards;
   animation-delay: 0.3s;
   animation-fill-mode: forwards;
@@ -355,17 +358,48 @@ p{
   transform: scale(0.8); /* Shrinks by 10% */
   background-color: var(--mouseDown-red);
 }
+.more-button-container {
+  display: inline-block; /* Ensures it wraps tightly around the button */
+  position: relative; /* Allows positioning within the parent context */
+  opacity: 0; /* Start hidden */
+  transform: translateY(100%); /* Start off-screen */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  grid-column-start: 4;
+  grid-row-start: 5;
+  align-self: end;
+  justify-self: end;
+}
+.share-button-container {
+  display: inline-block; /* Ensures it wraps tightly around the button */
+  position: relative; /* Allows positioning within the parent context */
+  opacity: 0; /* Start hidden */
+  transform: translateY(100%); /* Start off-screen */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  grid-column-start: 3;
+  grid-row-start: 5;
+  align-self: end;
+  justify-self: end;
+}
 .more-button {
   background-color: white;
   border: none;
   width: 4.5vw;
   height: 9vh;
   border-radius: 100%;
-  grid-column-start: 4;
-  grid-row-start: 5;
-  align-self: end;
-  justify-self: end;
-  opacity: 0;
+  opacity: 1; /* Ensure visibility */
+  transform: scale(1); /* Initial scale */
+  transition: transform 0.1s ease; /* Smooth scaling */
+  z-index: 10; /* Ensure it's clickable */
+}
+
+.more-button:hover {
+  background-color: var(--container-border);
+  cursor: pointer;
+}
+
+.more-button:active {
+  transform: scale(0.9) !important; /* Scale down on click */
+  background-color: var(--mouse-down-grey);
 }
 
 .more-button img {
@@ -373,22 +407,80 @@ p{
   height: auto;
 }
 
+.more-buttons-container {
+  display: none;
+  margin-top: 10px; /* Optional: Add some space between buttons */
+}
+
+.additional-button {
+  background-color: var(--container-grey);
+  border: none;
+  padding: 15px 17px;
+  margin: 5px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.more-icons{
+  width: 2vw;
+}
 .share-button {
   background-color: white;
   border: none;
   width: 4.5vw;
   height: 9vh;
   border-radius: 100%;
-  grid-column-start: 3;
-  grid-row-start: 5;
-  align-self: end;
-  justify-self: end;
-  opacity: 0;
+  z-index: 999;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1); /* Default state */
+  transition: transform 0.1s ease; /* Smooth scaling */
 }
 
 .share-button img {
   width: auto;
   height: auto;
+}
+
+.share-button:hover{
+  background-color: var(--container-border);
+  cursor: pointer;
+}
+.share-button:active {
+  transform: scale(0.9) !important; /* Scale down on click */
+  background-color: var(--mouse-down-grey);
+}
+.modal {
+  display: none; /* Hidden by default */
+  width: 20vw;
+  margin-left: 1.11vw;
+  margin-top: 40vh;
+  position: absolute;
+  background-color: var(--container-grey);
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 1.5vw;
+  transform: scale(0) translateY(80px); /* Initial scale down */
+  opacity: 0; /* Start as invisible */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth scaling and fading transition */
+}
+
+.modal.show {
+  transform: scale(1) translateY(0); /* Scale to normal size */
+  opacity: 1; /* Make it visible */
+}
+.modal p{
+  color: var(--charcoal);
+  text-decoration: none;
+}
+/* Optional: Modal content styling */
+.share-modal-content {
+  padding: 10px;
+  text-align: center;
 }
 
 .pop-up-pin:not(:hover) .more-button {
@@ -533,7 +625,7 @@ p{
     height: 100%; /* Ensure it takes full height */
     gap: 0px;
     grid-template-columns: 10px 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
   }
   .pop-up-pin img{
     width: 5vw;
@@ -558,3 +650,5 @@ p{
     background-color: var(--mouseDown-red);
   }
 }
+
+/*---------------------------------------------------------------------FINAL BUILD----------------------------------------------------------------------------*/

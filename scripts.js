@@ -71,14 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //alpha-------------------------------------------------------------------------------
 // Mouse Events
-saveButton.addEventListener('mouseenter', handleMouseEnter);
-saveButton.addEventListener('mouseleave', handleMouseLeave);
-saveButton.addEventListener('mousedown', handleMouseDown);
-saveButton.addEventListener('mouseup', handleMouseUp);
+const pinButton = document.querySelector('.pin-btn')
+pinButton.addEventListener('mouseenter', handleMouseEnter);
+pinButton.addEventListener('mouseleave', handleMouseLeave);
+pinButton.addEventListener('mousedown', handleMouseDown);
+pinButton.addEventListener('mouseup', handleMouseUp);
 
 // Touch Events
-saveButton.addEventListener('touchstart', handleTouchStart);
-saveButton.addEventListener('touchend', handleTouchEnd);
+pinButton.addEventListener('touchstart', handleTouchStart);
+pinButton.addEventListener('touchend', handleTouchEnd);
 
 function handleMouseEnter() {
   if (!isSaved) {
@@ -167,3 +168,36 @@ function updateButtonState(button) {
     button.innerHTML = 'Save';
   }
 }
+//-----------------------------------------------------FInAl BUILD----------------------------------------------------------------------------------
+const modal = document.getElementById('share-modal');
+const shareButton = document.querySelector('.share-button');
+
+// Toggle modal visibility on button click
+shareButton.addEventListener('click', function() {
+    if (modal.style.display === 'none' || modal.style.display === '') {
+        modal.style.display = 'block'; // Show modal
+        setTimeout(() => {
+            modal.classList.add('show'); // Add the class to trigger the scaling
+        }, 10); // Small delay to allow the display change to take effect
+    } else {
+        modal.classList.remove('show'); // Remove the scaling effect
+        setTimeout(() => {
+            modal.style.display = 'none'; // Hide modal after animation
+        }, 300); // Delay the hiding to allow the scale transition to finish
+    }
+});
+
+const popUpPin = document.querySelector('.pop-up-pin');
+
+const moreButton = document.querySelector('.more-button');
+const moreButtonsContainer = document.querySelector('.more-buttons-container');
+
+// Toggle the visibility of the additional buttons when the "More" button is clicked
+moreButton.addEventListener('click', () => {
+  // Toggle the display of the additional buttons
+  if (moreButtonsContainer.style.display === 'none' || moreButtonsContainer.style.display === '') {
+    moreButtonsContainer.style.display = 'block'; // Show the buttons
+  } else {
+    moreButtonsContainer.style.display = 'none'; // Hide the buttons
+  }
+});
