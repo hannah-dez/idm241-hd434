@@ -169,6 +169,7 @@ function updateButtonState(button) {
   }
 }
 //-----------------------------------------------------FInAl BUILD----------------------------------------------------------------------------------
+//SHARE MODAL SHOW
 const modal = document.getElementById('share-modal');
 const shareButton = document.querySelector('.share-button');
 
@@ -187,17 +188,56 @@ shareButton.addEventListener('click', function() {
     }
 });
 
+//ADDITIONAL BUTTONS SHOW
 const popUpPin = document.querySelector('.pop-up-pin');
 
 const moreButton = document.querySelector('.more-button');
 const moreButtonsContainer = document.querySelector('.more-buttons-container');
 
-// Toggle the visibility of the additional buttons when the "More" button is clicked
+
 moreButton.addEventListener('click', () => {
-  // Toggle the display of the additional buttons
-  if (moreButtonsContainer.style.display === 'none' || moreButtonsContainer.style.display === '') {
-    moreButtonsContainer.style.display = 'block'; // Show the buttons
-  } else {
-    moreButtonsContainer.style.display = 'none'; // Hide the buttons
-  }
+  moreButtonsContainer.classList.toggle('show'); // Toggle the 'show' class
 });
+
+//HOVER MODAL ON ADDITIONAL BUTTONS
+const hidepostButton = document.getElementById('hidepost');
+const hidepostModal = document.getElementById('hidepost-modal');
+let hoverTimer;
+
+hidepostButton.addEventListener('mouseenter', () => {
+  // Start a timer to show the modal after 1 second
+  hoverTimer = setTimeout(() => {
+    hidepostModal.style.opacity = '1'; // Fade in the modal
+  }, 100);
+});
+
+hidepostButton.addEventListener('mouseleave', () => {
+  // Clear the timer if the mouse leaves before 1 second
+  clearTimeout(hoverTimer);
+  hidepostModal.style.opacity = '0'; // Fade out the modal
+});
+
+// Function to add hover functionality to a button and its tooltip modal
+function addHoverTooltip(buttonId, modalId) {
+  const button = document.getElementById(buttonId);
+  const modal = document.getElementById(modalId);
+  let hoverTimer;
+
+  button.addEventListener('mouseenter', () => {
+    // Show the modal after 1 second delay
+    hoverTimer = setTimeout(() => {
+      modal.style.opacity = '1'; // Fade in
+    }, 100);
+  });
+
+  button.addEventListener('mouseleave', () => {
+    // Clear the timer and fade out the modal
+    clearTimeout(hoverTimer);
+    modal.style.opacity = '0'; // Fade out
+  });
+}
+
+// Add tooltips for each button
+addHoverTooltip('hidepost', 'hidepost-modal');
+addHoverTooltip('download', 'download-modal');
+addHoverTooltip('report', 'report-modal');

@@ -368,6 +368,7 @@ p{
   grid-row-start: 5;
   align-self: end;
   justify-self: end;
+  z-index: 500;
 }
 .share-button-container {
   display: inline-block; /* Ensures it wraps tightly around the button */
@@ -390,6 +391,7 @@ p{
   transform: scale(1); /* Initial scale */
   transition: transform 0.1s ease; /* Smooth scaling */
   z-index: 10; /* Ensure it's clickable */
+  z-index: 501;
 }
 
 .more-button:hover {
@@ -408,8 +410,19 @@ p{
 }
 
 .more-buttons-container {
-  display: none;
-  margin-top: 10px; /* Optional: Add some space between buttons */
+  display: flex; /* Flexbox to arrange the buttons */
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center align */
+  position: absolute; /* Absolute positioning for placement */
+  bottom: 100px; /* Start from the bottom of the parent */
+  right: 13px; /* Align to the right */
+  opacity: 0; /* Start hidden */
+  transform: translateY(100%); /* Start off-screen */
+  transition: opacity 0.3s ease, transform 0.5s ease;
+}
+.more-buttons-container.show {
+  opacity: 1; /* Make visible */
+  transform: translateY(0); /* Fly in */
 }
 
 .additional-button {
@@ -419,12 +432,34 @@ p{
   margin: 5px;
   border-radius: 100%;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s ease;
+  transform: translateY(50px); /* Start further down */
 }
-
-
+.additional-button:hover{
+  background-color: var(--mouse-down-grey);
+}
+.more-buttons-container.show .additional-button {
+  transform: translateY(0); /* Fly into place */
+}
 .more-icons{
   width: 2vw;
+}
+
+.tooltip-modal {
+  position: absolute;
+  bottom: 70px; /* Adjust to position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 15px;
+  background-color: var(--charcoal);
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 0; /* Start hidden */
+  pointer-events: none; /* Prevent interference with mouse events */
+  transition: opacity 0.3s ease-in-out; /* Smooth fade-in/out */
+  white-space: nowrap; /* Prevent text wrapping */
+  z-index: 1000;
 }
 .share-button {
   background-color: white;
@@ -462,7 +497,7 @@ p{
   border: 1px solid #ccc;
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 1001;
   border-radius: 1.5vw;
   transform: scale(0) translateY(80px); /* Initial scale down */
   opacity: 0; /* Start as invisible */
@@ -541,7 +576,7 @@ p{
   justify-content: center;
   border-radius: 10px;
   text-align: center;
-  z-index: 1000;
+  z-index: 1002;
   cursor:pointer;
 }
 
