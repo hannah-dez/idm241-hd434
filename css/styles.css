@@ -187,7 +187,7 @@ p{
   gap: 10px;
   overflow: hidden; /* Ensures animation stays within bounds */
   opacity: 0; /* Start hidden */
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
   cursor: pointer;
   border-radius: 3.5vw;
   box-sizing: border-box; 
@@ -290,7 +290,7 @@ p{
 }
 
 .pin-btn img {
-  width: auto;
+  width: 80%;
   height: auto;
 }
 
@@ -332,12 +332,19 @@ p{
   transform: scale(1); /* Keep size normal */
   border: 8px solid var(--main-red);
 }
-
+.pin-btn.active img{
+  width: 100%;
+  height: auto;
+}
 /* Ensure no pulsing animation in active state */
 .pin-btn.active:hover {
   animation: none; /* Stop pulsing when active */
   background-color: var(--charcoal);
   border: none;
+}
+.pin-btn.active:hover img{
+  width: 80%;
+  height: auto;
 }
 
 /* Mouse-up state styles for default */
@@ -405,7 +412,7 @@ p{
 }
 
 .more-button img {
-  width: auto;
+  width: 70%;
   height: auto;
 }
 
@@ -475,7 +482,7 @@ p{
 }
 
 .share-button img {
-  width: auto;
+  width: 65%;
   height: auto;
 }
 
@@ -489,13 +496,13 @@ p{
 }
 .modal {
   display: none; /* Hidden by default */
-  width: 20vw;
-  margin-left: 1.11vw;
-  margin-top: 40vh;
+  width: 85%;
+  margin-top: 33vh;
+  margin-left: 2%;
   position: absolute;
   background-color: var(--container-grey);
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1001;
   border-radius: 1.5vw;
@@ -514,15 +521,37 @@ p{
 }
 /* Optional: Modal content styling */
 .share-modal-content {
-  padding: 10px;
   text-align: center;
 }
+.share-modal-content img{
+  width: 90%;
+  margin: 10px auto auto;
+}
+.share-modal-grid{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: auto;
+}
+.share-modal-grid img{
+  width: 3vw;
+  margin-top: 10px;
+}
+.share-modal-content p{
+  margin: auto;
+}
+.share-sepator{
+  height: 3px;
+  border-radius: 20vw;
+  background-color: var(--container-border);
+  width: 90%;
+  margin: 10px auto;
 
-.pop-up-pin:not(:hover) .more-button {
+}
+.pop-up-pin:not(:hover) .more-button-container {
   animation: flyOut 0.6s ease-out forwards;
 }
 
-.pop-up-pin:not(:hover) .share-button {
+.pop-up-pin:not(:hover) .share-button-container {
   animation: flyOut 0.6s ease-out forwards;
 }
 
@@ -590,6 +619,14 @@ p{
   transition: transform 0.3s; /* Smooth transition for hover scaling */
 }
 /*VARIABLE DESIGN*/
+@media (max-width:1206px) {
+  .image-container{
+    width: 30vw;
+  }
+  .modal{
+    margin-top: 17.5vw;
+  }
+}
 @media (max-width: 1000px) { /*TABLET */
   .grid-container {
     grid-template-columns: 40vw 40vw; 
@@ -608,6 +645,8 @@ p{
   .pop-up-pin {
     width: 100%; /* Ensure it scales with the container */
     height: 100%; /* Ensure it takes full height */
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0px;
   }
 
   .pop-up-pin img{
@@ -616,6 +655,45 @@ p{
   }
   .pop-up-pin .pin-btn{
     border-width: 6px;
+  }
+  .share-button-container{
+    grid-column-start: 3;
+    justify-self: center;
+  }
+  .share-button{
+    width: 6vw;
+  }
+  .share-button img{
+    width: 70%;
+  }
+  .more-button-container{
+    justify-self: start;
+  }
+  .more-button{
+    width: 6vw;
+  }
+  .more-button img{
+    width: 70%;
+  }
+  .pin-btn{
+    width: 6vw;
+  }
+  .pin-btn img{
+    width: 80%;
+  }
+  .modal{
+    margin-top: 36vh;
+  }
+  .share-modal-content img{
+    width: 100%;
+    margin: 10px auto auto;
+  }
+  .share-modal-grid img{
+    width: 5vw;
+    margin-top: 10px;
+  }
+  .share-sepator{
+    width: 95%;
   }
 }
 
@@ -635,9 +713,41 @@ p{
   .pop-up-pin img{
     width: 3vw;
   }
+  .share-button{
+    width: 7.5vw;
+  }
+  .share-button img{
+    width: 70%;
+  }
+  .more-button{
+    width: 7.5vw;
+  }
+  .more-button img{
+    width: 70%;
+  }
+  .pin-btn{
+    width: 7vw;
+  }
+  .pin-btn img{
+    width: 80%;
+  }
+  .modal{
+    margin-top: 36vh;
+  }
+  .share-modal-content img{
+    width: 100%;
+    margin: 10px auto auto;
+  }
+  .share-modal-grid img{
+    width: 6vw;
+    margin-top: 10px;
+  }
+  .share-sepator{
+    width: 95%;
+  }
 }
 
-@media (max-width: 600px) { /*MOBILE*/
+@media (max-width: 650px) { /*MOBILE*/
   .grid-container {
       grid-template-columns: 80vw; 
   }
@@ -648,19 +758,17 @@ p{
     width: 65vw;
   }
   .image-container {
-    width: 70vw;
+    width: 60vw;
     height: 80vh;
   }
   .overlay-image {
     width: 100%; /* Ensure it scales with the container */
     height: 100%; /* Maintain aspect ratio */
+    gap: 0px;
   }
   .pop-up-pin {
     width: 100%; /* Ensure it scales with the container */
     height: 100%; /* Ensure it takes full height */
-    gap: 0px;
-    grid-template-columns: 10px 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
   }
   .pop-up-pin img{
     width: 5vw;
@@ -671,7 +779,7 @@ p{
   .pop-up-pin .pin-btn{
     justify-self: end;
   }
-
+ 
 }
 
 /* Tap Interactions */
