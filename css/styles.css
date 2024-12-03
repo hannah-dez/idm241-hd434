@@ -757,31 +757,69 @@ p{
   #mode-example img{
     width: 65vw;
   }
-  .image-container {
-    width: 60vw;
-    height: 80vh;
-  }
-  .overlay-image {
-    width: 100%; /* Ensure it scales with the container */
-    height: 100%; /* Maintain aspect ratio */
-    gap: 0px;
-  }
-  .pop-up-pin {
-    width: 100%; /* Ensure it scales with the container */
-    height: 100%; /* Ensure it takes full height */
-  }
-  .pop-up-pin img{
-    width: 5vw;
-  }
-  .pop-up-pin button{
-    width: 50%;
-  }
-  .pop-up-pin .pin-btn{
-    justify-self: end;
-  }
+ .image-container {
+  width: 60vw;
+ }
+ .share-button{
+  width: 8.5vw;
+ }
+ .more-button{
+  width: 8.5vw;
+ }
+ .pin-btn{
+  width: 8.5vw;
+ }
  
 }
 
+@media (max-width:550px){
+  .image-container{
+    width: 70vw;
+    height: 70vh;
+  }
+  .share-button{
+    width: 9.5vw;
+  }
+  .more-button{
+    width: 9.5vw;
+  }
+  .pin-btn{
+    width: 10vw;
+  }
+  .modal{
+    margin-top: 38vw;
+  }
+  .share-modal-grid img{
+    width: 9vw;
+  }
+  .tooltip-modal{
+    bottom: 60px;
+  }
+}
+@media (max-width:450px){
+  .image-container{
+    width: 80vw;
+  }
+  .share-button{
+    width: 11.5vw;
+  }
+  .more-button{
+    width: 11.5vw;
+  }
+  .pin-btn{
+    width: 13vw;
+  }
+  .more-buttons-container{
+    right: 18px;
+  }
+  .additional-button img{
+    width: 4vw;
+  }
+  .modal{
+    width: 80%;
+    margin-left: 3%;
+  }
+}
 /* Tap Interactions */
 @media (hover: none) and (pointer: coarse) {
   .button {
