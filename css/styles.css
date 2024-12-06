@@ -62,7 +62,25 @@ p{
 .logo{
   max-width: 70px;
 }
-
+.menu-button{
+  padding: 15px;
+  margin: 5px;
+  border: none;
+  background-color: var(--main-red);
+  color: white;
+  border-radius: 2vw;
+  cursor: pointer;
+}
+.menu-button:hover{
+  background-color: var(--mouseDown-red);
+}
+.hold-buttons{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+}
 /*DIVS DECOR*/
 .section {
   text-align: left;              
