@@ -31,6 +31,9 @@ body{
     font-family: sans-serif;
     margin: 0;
 }
+main{
+  max-width: 2000px;
+}
 h1{
     text-align: center;
     color: var(--main-red);
@@ -155,7 +158,7 @@ p{
   opacity: 1; /* Make it fully visible */
 }
 
-/*-------------------------------------------------BEtA BUILD-------------------------------------------------------------------*/
+/*-------------------------------------------------BEtA BUILD--------------------------------------------------------------------------------------------------------*/
 .image-container {
   display: block;
   width: 25vw; /* Adjust based on your preferred initial size */
@@ -163,7 +166,7 @@ p{
   height: 70vh;
   aspect-ratio: 1 / 1; /* Enforces a 1:1 aspect ratio */
   position: relative;
-  margin: auto;
+  margin: 24px auto;
   overflow: hidden; /* Keeps everything within bounds */
 }
 
@@ -286,6 +289,7 @@ p{
   opacity: 0; /* Start hidden */
   transition: transform 0.3s ease, opacity 0.5s ease; /* Shorter transition for smoothness */
   cursor: pointer;
+  pointer-events: none;
   overflow: hidden;
 }
 
@@ -295,15 +299,17 @@ p{
 }
 
 .pop-up-pin:hover .pin-btn {
-  opacity: 1; /* Make the button visible */
-  transform: scale(1); /* Scale to normal size */
-  animation: scaleIn 0.3s forwards;}
-
-.pop-up-pin:not(:hover) .pin-btn {
-  animation: scaleOut 0.3s forwards;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto; /* Enable interactions */
 }
 
-/* PIN BUTTON STUFF------------------------------------------------------------------ */
+.pop-up-pin:not(:hover) .pin-btn {
+  animation: none;
+}
+
+/* -------------------------------------------------------------------------FINAL BUILD------------------------------------------------------------------ */
+/*Pin Button*/
 .pin-btn.default {
   opacity: 1; /* Fully visible */
 }
@@ -322,23 +328,23 @@ p{
 }
 /* Default state with pulse on hover */
 .pin-btn.default:hover {
-  animation: pulse 0.6s infinite; /* Start pulsing */
+  animation: pulse 0.6s infinite; 
   background-color: var(--dark-red);
 }
 
 /* Active state styles */
 .pin-btn.active {
-  background-color: rgba(0, 0, 0, 0); /* Change background when active */
-  transform: scale(1); /* Keep size normal */
+  background-color: rgba(0, 0, 0, 0); 
+  transform: scale(1); 
   border: 8px solid var(--main-red);
 }
 .pin-btn.active img{
   width: 100%;
   height: auto;
 }
-/* Ensure no pulsing animation in active state */
+/* No pulsing animation in active state */
 .pin-btn.active:hover {
-  animation: none; /* Stop pulsing when active */
+  animation: none; 
   background-color: var(--charcoal);
   border: none;
 }
@@ -347,30 +353,30 @@ p{
   height: auto;
 }
 
-/* Mouse-up state styles for default */
 .pin-btn.default.mouse-up {
-  transform: scale(0.9); /* Slightly shrink when mouse is up */
+  transform: scale(0.9); 
 }
 
-/* Mouse-up state styles for active */
 .pin-btn.active.mouse-up {
-  transform: scale(0.9); /* Slightly shrink when mouse is up */
+  transform: scale(0.9); 
 }
 .pin-btn.active.mouse-down {
-  transform: scale(0.8); /* Shrinks by 10% */
+  transform: scale(0.8); 
   background-color: black;
 }
 .pin-btn.default.mouse-down {
   animation: none;
-  transform: scale(0.8); /* Shrinks by 10% */
+  transform: scale(0.8); 
   background-color: var(--mouseDown-red);
 }
+
+/*MORE/SHARE button interactions*/
 .more-button-container {
-  display: inline-block; /* Ensures it wraps tightly around the button */
-  position: relative; /* Allows positioning within the parent context */
-  opacity: 0; /* Start hidden */
-  transform: translateY(100%); /* Start off-screen */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  display: inline-block; 
+  position: relative; 
+  opacity: 0; 
+  transform: translateY(100%); 
+  transition: opacity 0.3s ease, transform 0.3s ease; 
   grid-column-start: 4;
   grid-row-start: 5;
   align-self: end;
@@ -378,11 +384,11 @@ p{
   z-index: 500;
 }
 .share-button-container {
-  display: inline-block; /* Ensures it wraps tightly around the button */
-  position: relative; /* Allows positioning within the parent context */
-  opacity: 0; /* Start hidden */
-  transform: translateY(100%); /* Start off-screen */
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  display: inline-block; 
+  position: relative;
+  opacity: 0; 
+  transform: translateY(100%); 
+  transition: opacity 0.3s ease, transform 0.3s ease; 
   grid-column-start: 3;
   grid-row-start: 5;
   align-self: end;
@@ -394,10 +400,10 @@ p{
   width: 4.5vw;
   height: 9vh;
   border-radius: 100%;
-  opacity: 1; /* Ensure visibility */
-  transform: scale(1); /* Initial scale */
-  transition: transform 0.1s ease; /* Smooth scaling */
-  z-index: 10; /* Ensure it's clickable */
+  opacity: 1; 
+  transform: scale(1); 
+  transition: transform 0.1s ease; 
+  z-index: 10; 
   z-index: 501;
 }
 
@@ -407,7 +413,7 @@ p{
 }
 
 .more-button:active {
-  transform: scale(0.9) !important; /* Scale down on click */
+  transform: scale(0.9) !important; 
   background-color: var(--mouse-down-grey);
 }
 
@@ -417,19 +423,19 @@ p{
 }
 
 .more-buttons-container {
-  display: flex; /* Flexbox to arrange the buttons */
-  flex-direction: column; /* Stack buttons vertically */
-  align-items: center; /* Center align */
-  position: absolute; /* Absolute positioning for placement */
-  bottom: 100px; /* Start from the bottom of the parent */
-  right: 13px; /* Align to the right */
-  opacity: 0; /* Start hidden */
-  transform: translateY(100%); /* Start off-screen */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  position: absolute; 
+  bottom: 100px; 
+  right: 13px; 
+  opacity: 0; 
+  transform: translateY(100%); 
   transition: opacity 0.3s ease, transform 0.5s ease;
 }
 .more-buttons-container.show {
-  opacity: 1; /* Make visible */
-  transform: translateY(0); /* Fly in */
+  opacity: 1; 
+  transform: translateY(0); 
 }
 
 .additional-button {
@@ -440,13 +446,13 @@ p{
   border-radius: 100%;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s ease;
-  transform: translateY(50px); /* Start further down */
+  transform: translateY(50px); 
 }
 .additional-button:hover{
   background-color: var(--mouse-down-grey);
 }
 .more-buttons-container.show .additional-button {
-  transform: translateY(0); /* Fly into place */
+  transform: translateY(0); 
 }
 .more-icons{
   width: 2vw;
@@ -454,7 +460,7 @@ p{
 
 .tooltip-modal {
   position: absolute;
-  bottom: 70px; /* Adjust to position above the button */
+  bottom: 70px; 
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 15px;
@@ -462,10 +468,10 @@ p{
   color: white;
   border-radius: 5px;
   font-size: 14px;
-  opacity: 0; /* Start hidden */
-  pointer-events: none; /* Prevent interference with mouse events */
-  transition: opacity 0.3s ease-in-out; /* Smooth fade-in/out */
-  white-space: nowrap; /* Prevent text wrapping */
+  opacity: 0; 
+  pointer-events: none; 
+  transition: opacity 0.3s ease-in-out; 
+  white-space: nowrap; 
   z-index: 1000;
 }
 .share-button {
@@ -477,8 +483,8 @@ p{
   z-index: 999;
   visibility: visible;
   pointer-events: auto;
-  transform: scale(1); /* Default state */
-  transition: transform 0.1s ease; /* Smooth scaling */
+  transform: scale(1); 
+  transition: transform 0.1s ease; 
 }
 
 .share-button img {
@@ -491,11 +497,11 @@ p{
   cursor: pointer;
 }
 .share-button:active {
-  transform: scale(0.9) !important; /* Scale down on click */
+  transform: scale(0.9) !important; 
   background-color: var(--mouse-down-grey);
 }
 .modal {
-  display: none; /* Hidden by default */
+  display: none; 
   width: 85%;
   margin-top: 33vh;
   margin-left: 2%;
@@ -506,20 +512,20 @@ p{
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1001;
   border-radius: 1.5vw;
-  transform: scale(0) translateY(80px); /* Initial scale down */
-  opacity: 0; /* Start as invisible */
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth scaling and fading transition */
+  transform: scale(0) translateY(80px); 
+  opacity: 0; 
+  transition: transform 0.3s ease, opacity 0.3s ease; 
 }
 
 .modal.show {
-  transform: scale(1) translateY(0); /* Scale to normal size */
-  opacity: 1; /* Make it visible */
+  transform: scale(1) translateY(0); 
+  opacity: 1; 
 }
 .modal p{
   color: var(--charcoal);
   text-decoration: none;
 }
-/* Optional: Modal content styling */
+
 .share-modal-content {
   text-align: center;
 }
@@ -547,6 +553,7 @@ p{
   margin: 10px auto;
 
 }
+/*Pop Up Styles + Pop up pin cont.*/
 .pop-up-pin:not(:hover) .more-button-container {
   animation: flyOut 0.6s ease-out forwards;
 }
@@ -560,12 +567,12 @@ p{
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0; /* Start from a point */
-  height: 0; /* Start from a point */
-  background-color: red; /* Circle color */
+  width: 0; 
+  height: 0; 
+  background-color: red; 
   border-radius: 50%;
-  animation: sparkAnimation 3s forwards; /* Trigger the animation */
-  pointer-events: none; /* Prevent mouse events on the spark */
+  animation: sparkAnimation 3s forwards; 
+  pointer-events: none;
 }
 
 @keyframes sparkAnimation {
@@ -573,22 +580,22 @@ p{
     width: 0;
     height: 0;
     opacity: 1;
-    transform: translate(-50%, -50%); /* Center it */
+    transform: translate(-50%, -50%); 
   }
   50% {
-    width: 500px; /* Increase size */
-    height: 500px; /* Increase size */
-    opacity: 1; /* Fully visible */
+    width: 500px; 
+    height: 500px; 
+    opacity: 1; 
     transform: translate(0, 0);
   }
   100% {
-    width: 0; /* Shrink back */
-    height: 0; /* Shrink back */
-    opacity: 0; /* Fade out */
+    width: 0; 
+    height: 0; 
+    opacity: 0; 
     transform: translate(100%, 100%);
   }
 }      
-/* Common styles for popups */
+
 .popup3 {
   position: fixed;
   bottom: 0;
@@ -609,14 +616,59 @@ p{
   cursor:pointer;
 }
 
-/* Animation when showing the popup */
+
 .popup3.show {
   opacity: 1;
-  transform: translate(-50%, -50px) scale(1); /* Adjust to control the fly-in effect */
+  transform: translate(-50%, -50px) scale(1); 
 }
 .popup3.show:hover {
-  transform: translate(-50%, -50px) scale(1.1); /* Scale up by 10% on hover */
-  transition: transform 0.3s; /* Smooth transition for hover scaling */
+  transform: translate(-50%, -50px) scale(1.1); 
+  transition: transform 0.3s; /
+}
+/*New Info Display*/
+.all-description{
+  display: block;
+  width: 100%;
+  margin: auto;
+  max-width: 2000px;
+}
+.description-container{
+ display: grid;
+ grid-template-columns: 15% 30% 30% 15%;
+ margin-left: 10%;
+}
+
+.section-new{
+  background-color: var(--container-grey);
+  border-radius: 2vw;
+  margin: 15px 10px;
+  padding: 25px;
+  height: auto;
+}
+.description-subhead{
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 12%;
+  font-style: italic;
+}
+.section-mini{
+  height: auto;
+  background-color: var(--container-grey);
+  border-radius: 2vw;
+  margin: auto 10px;
+  padding: 25px;
+  width: 30%;
+  justify-self: center;
+}
+.all-description h2{
+  margin-top: 64px;
+}
+.interaction-display{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 16px;
 }
 /*VARIABLE DESIGN*/
 @media (max-width:1206px) {
@@ -695,6 +747,11 @@ p{
   .share-sepator{
     width: 95%;
   }
+  .description-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto 10px;
+  }
 }
 
 @media (max-width:800px){
@@ -769,7 +826,13 @@ p{
  .pin-btn{
   width: 8.5vw;
  }
- 
+ .description-container{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+ }
+ .section-mini{
+  width: 70%;
+ }
 }
 
 @media (max-width:550px){
@@ -787,7 +850,7 @@ p{
     width: 10vw;
   }
   .modal{
-    margin-top: 38vw;
+    margin-top: 35vw;
   }
   .share-modal-grid img{
     width: 9vw;
@@ -818,6 +881,7 @@ p{
   .modal{
     width: 80%;
     margin-left: 3%;
+    margin-top: 50vw;
   }
 }
 /* Tap Interactions */
