@@ -20,6 +20,56 @@
         <a href="final.html"><button class="menu-button">Final</button></a>
         <a href="finalbuild.html"><button class="menu-button">Final Build</button></a>
     </div>
-   
+   <div class="case-study">
+    <h1>IDM 241  Case Study</h1>
+    <h2>The Overview</h2>
+        <p>In IDM 241 Micro Interactions, I focused on redesigning and improving interactive elements of a Pinterest-style div over a ten-week period. The project emphasized combining HTML, CSS, and JavaScript skills with UI/UX design knowledge to create five interactive elements and their micro-interactions. Starting with analyzing the existing Pinterest save button, I incrementally added features such as hover animations, redesigned buttons, modals, and interactive elements with polished animations. Through alpha and beta stages, I improved animations, branding consistency, and user experience while overcoming challenges in code organization and logic. By the final stage, I exceeded project requirements, creating multiple interactions that enhanced usability and aesthetic appeal. This experience strengthened my coding, design, and organizational skills while teaching me valuable lessons about developing polished, user-centric designs under tight deadlines.</p>
+    <h2>Context and Challenge</h2>
+        <p>In the course IDM 241 Micro interactions, our focus was on improving a user's experience through the implementation of micro interactions. We were tasked with choosing an existing site and div that contained multiple micro interactions; then our goal was to redesign and improve those interactions. I decided to focus my project on a Pinterest interactive div. We had ten weeks to design and code five interactive elements and their consecutive micro interactions. The purpose of the class was to give us an opportunity to combine our collective knowledge of HTML, CSS, and JS, and our UI/UX design knowledge. </p>
+        <p>The Problem: Be able to appropriately identify and design meaningful micro interactions and implement them through code. </p>
+        <p>Measuring success: I decided to measure my success based on a few criteria. I wanted to meet al project requirements, but it was also important for me to create something that I was proud of. Leaning into the purpose of this class, I wanted to learn more about my own design process and cement my coding abilities. Here are my succinct goals for this project:</p>
+            <ol>
+                <li>Meet all Project requirements (5 interactive elements, smooth interactions, accurate descriptions) </li>
+                <li>Create a design that expresses the proper branding and improves the user experience</li>
+                <li>Consistent design that looked uniform</li>
+                <li>Cement coding and design skills</li>
+            </ol>
+    <h2>Process and Insight</h2>
+        <p>The project was modulated week by week where we would add more and more interactive elements. The class would switch between doing “description” deliverables and then “build” deliverables. The descriptions would have my plan for the design and a description of the interactive parts including triggers, feedback, rules, loops, and modes. For the build deliverables I was supposed to include the interaction description, but also code the interactions that I described. This went on adding more and more elements until I was left with a final div with over five interactive elements.  </p>
+        <h3>Alpha</h3>
+            <img class="gif-example" src="./content/save_btn_example.gif">
+            <p>The alpha included the first two deliverables for our project, the description and the build. For this initial deliverable, the goal was to familiarize the student with identifying triggers, rules, feedback, loops and modes. This was carried out by tasking us with identifying an existing button and analyzing its micro interaction and makeup. For the coding deliverable, we were tasked with coding the button as it was. </p>
+            <p>I analyzed the existing save button on Pinterest. I identified the triggers, rules, feedback, loops, and modes for this button. Then for the Alpha Build I recreated the existing interaction and included the same descriptors of triggers, rules. feedback, loops and modes. This helped me get into the mindset of using js and css cohesively. I was able to achieve the hover state through css, and was able to use JS to make the text change and the button scale. This process went pretty smooth and I used different tutorials and prompt engineering to help me along my process of creating the JS. After this step, it was time to start redesigning and innovating for the Beta.</p>
+        <h3>Beta</h3>
+            <div class="img-holder">
+                <img id="img-1" src="./content/Save_Btn.png">
+                <img src="./content/div_example.png">
+                <img id="img-2" src="./content/shortcut_panel_removed_panel.png">
+            </div>
+            <p>The Beta had the next two deliverables of description and build. I was tasked to redesign 2-3 micro interactions and then code it. I started with the image div itself and creating the hover state which would reveal the interactive elements, each element also had an introduction animation. I decided that there could be a more interesting way for the elements to animate in rather than just popping up as they did on the original site. However, I also wanted to balance it so that the animation wasn’t too distracting and didn’t take that long. I had five elements to animate for this section, the background color, the pin button, the profile statement, and the share and more buttons.</p>
+            <p>When designing the initial animation for hovering over the div, I decided to take this opportunity to test out different animation types. I had the background and profile statement fade in/out, the pin button would scale in/out, and then the share and more buttons would “wave” in from the bottom and then fly out. This was a great first decision as it helped me familiarize myself with the css and js structures I may need for the rest of the project. Next, I edited the save button, which I rebranded to be the pin button. I felt that on the page it is called “save pin to board” and felt that it could be shortened to “pinned to board.” I wanted the clicking of the button to trigger an animation, originally that animation was going to have the pin image “slam down” on the button as if It were pinning the image. However, due to my time constraints I decided to opt for a more simple animation that involved the red color swiping away to reveal the active state of the button. I also decided to code the modal that pops up after a user clicks on the pin button. This was fun to figure out and helped me learn more about popups, which I later used twice more for this project. This one was the simplest animation of the three as all I added was a scale up and fly in ability. However, I also added the ability for a user to stop the div from flying out by hovering. I thought this would be a good use in case the user cannot read the animation within the three seconds it is on screen. I also tested a few different time frames, but most users said that three seconds was enough for them to read the message. This portion of the project allowed me to gain comfortability with the coding languages and snippets that I would need for the rest of the project. </p>
+        <h3>Final</h3>
+        <div class="img-holder">
+            <img src="./content/save_btn_active.png">
+            <img src="./content/shortcut_panel_removed_panel.png">
+            <img src="./content/Default_more_btn.png">
+            <img src="./content/active_more_btn.png">
+            <img src="./content/More_MOdal_Buttons_Example.png">
+            <img src="./content/Share_Panel_Mode_Example.png">
+        </div>
+            <p>For my final I was tasked with adding two more interactions, but I ended up adding more. I was excited about the possibilities and challenged myself to create more interactions to make a more complete project and div. The first interaction I decided to add was interactions for the more button. I wanted to change the pop up from a box to the individual buttons, however I was worried that the user wouldn’t be able to tell the buttons functions just based on the icon. So, I added an interaction to those extra buttons a hover feature that reveals a tag for what the button does. Next, I decided I would update the share button to also show a more improved modal. I want to make it more compact and also add an entrance and exit animation. These animations were also fairly self-explanatory to add as I had gotten accustomed to pop ups and similar JS animations at this point. However, I did have complications at the end of my final build.</p>
+            <p>I was supposed to have three versions of my redesigned div as a part of my final build deliverable. Forgetting JS logic, I assumed I would just copy paste the div three times and it would be fine. That was not the case. I realized I had to go through and create foreach loops along with adjusting some of my query selectors. Up to this point I had been using the same JS file for all of my pages, and this was the point where I realized I should create a new file to avoid complications. I used AI to parse through my original JS to find the queries that applied to my final build html. This worked for the most part but some interactions didn't carry over. By comparing my older JS and the new file I had created I was able to connect the pieces and ensure that all of my interactions stayed consistent.</p>
+            <p> I later created JS files for each of my pages as the conflicting code would break the previous pages. This process helped me learn more about code organization and better practices for larger projects, especially ones with a lot of JS. </p>
+    <h2>Solution</h2>
+            <p>I am extremely proud of my final build and how it came together so nicely. I gained a lot of confidence in my coding abilities throughout this process along with my organization and time management skills. Below I have a breakdown of each interactions animation. </p>
+        <h3>Pin Div</h3>
+            <img class="gif-example" src="./content/Pin_Div_Example.gif">
+        <h3>Pin Button</h3>
+            <img class="gif-example" src="./content/pin_button_example.gif">
+        <h3>Share and More Button</h3>
+            <img class="gif-example" src="./content/Share_More_button_example.gif">
+    <h2>The Results</h2>
+        <p>This project was extremely successful in my eyes. I not only completed all project requirements, but I added more interactions than needed because I wanted to prioritize the users experience on my site. The design choices I made not only matched the brand identity of Pinterest, but also added to the ease and aesthetic of the user’s experience. I kept my design choices consistent, such as the hover and mouse down states for the circular buttons. Also, I was able to reestablish my coding skills and improve my project organization abilities. Overall, I would say I learned a lot about the process of developing a product and how I work under the pretenses of professional deliverables in a short amount of time.   </p>
+    </div>
 </body>
 </html>

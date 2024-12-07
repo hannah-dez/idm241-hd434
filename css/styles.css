@@ -81,6 +81,56 @@ p{
   margin: auto;
   justify-content: center;
 }
+/*Case Study */
+.case-study {
+  max-width: 1500px;
+  width: 60%;
+  margin: auto;
+  margin-top: 32px;
+}
+.case-study h1{
+  text-align: left;
+  margin-left: 24px;
+  font-family: NeueHass;
+  color: black;
+}
+.case-study h2{
+  text-align: left;
+  margin: 24px;
+}
+.case-study h3{
+  text-align: left;
+  margin: 24px;
+}
+.case-study p{
+  color: black;
+  font-family:  arial;
+  text-indent: 2em;
+}
+.gif-example{
+  width: 100%;
+  margin: auto;
+}
+.img-holder{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: var(--container-grey);
+  height: auto;
+  border-radius: 2vw;
+  padding: 24px;
+}
+.img-holder img{
+  width: 40%;
+  height: auto;
+}
+#img-1{
+  width: 100%;
+}
+#img-2{ 
+  width: 50%;
+  height: 50%;
+}
 /*DIVS DECOR*/
 .section {
   text-align: left;              
@@ -773,6 +823,9 @@ p{
 }
 
 @media (max-width:800px){
+  .case-study{
+    width: 80%;
+  }
   .image-container {
     width: 50vw;
     height: 80vh;
