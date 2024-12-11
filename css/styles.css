@@ -737,6 +737,8 @@ p{
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 16px;
+  max-width: 1600px;
+  margin: auto;
 }
 /*VARIABLE DESIGN*/
 @media (max-width:1206px) {
